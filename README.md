@@ -24,7 +24,50 @@ Apesar de não ter conseguido entregar a aplicação 100% funcional, estou satis
 
 ## Arquitetura do Projeto
 
-ZOO-MANAGEMENT-SYSTEM/ ├── backend/ │ └── src/ │ ├── controllers/ │ ├── routes/ │ ├── App.ts │ ├── database.ts │ └── server.ts ├── frontend/ │ └── src/ │ ├── components/ │ ├── pages/ │ ├── types/ │ ├── index.css │ └── main.tsx ├── .env └── outros arquivos de configuração
+ZOO-MANAGEMENT-SYSTEM/
+├── backend/
+│   ├── node_modules/
+│   ├── src/
+│   │   ├── controllers/
+│   │   │   └── animal_controller.ts
+│   │   ├── routes/
+│   │   │   ├── animais.ts
+│   │   │   └── post.ts
+│   │   ├── App.ts
+│   │   ├── database.ts
+│   │   └── server.ts
+│   ├── package-lock.json
+│   ├── package.json
+│   └── tsconfig.json
+├── frontend/
+│   ├── node_modules/
+│   ├── src/
+│   │   ├── components/
+│   │   │   └── NavBar.tsx
+│   │   ├── pages/
+│   │   │   ├── animais/
+│   │   │   │   ├── CadastroAnimal.tsx
+│   │   │   │   └── ListaAnimais.tsx
+│   │   │   ├── cuidados/
+│   │   │   │   ├── CadastroCuidado.tsx
+│   │   │   │   └── ListaCuidados.tsx
+│   │   │   └── DASHBOARD.tsx
+│   │   ├── types/
+│   │   │   └── App.tsx
+│   │   ├── index.css
+│   │   └── main.tsx
+│   ├── vite-env.d.ts
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── tailwind.config.js
+│   ├── tsconfig.app.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+├── .env
+├── .gitignore
+└── eslint.config.js
 
 
 ## Banco de Dados
