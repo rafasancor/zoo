@@ -23,7 +23,7 @@ Apesar de não ter conseguido entregar a aplicação 100% funcional, estou satis
 - Estrutura criada para `POST`, porém com falhas de integração na inserção no banco
 
 ## Arquitetura do Projeto
-
+```
 ZOO-MANAGEMENT-SYSTEM/
 ├── backend/
 │   └── src/
@@ -41,7 +41,7 @@ ZOO-MANAGEMENT-SYSTEM/
 │       └── main.tsx
 ├── .env
 └── outros arquivos de configuração
-
+```
 
 
 ## Banco de Dados
