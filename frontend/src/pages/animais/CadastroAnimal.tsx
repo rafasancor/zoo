@@ -58,14 +58,27 @@ function CadastroAnimal() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+  
     if (!validateForm()) {
       toast.error('Por favor, corrija os erros no formulário');
       return;
     }
-
+  
     try {
-      // TODO: Implementar chamada à API
+      console.log('Enviando dados para o backend:', animal);
+  
+      const response = await fetch('http://localhost:3000/api/animais', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(animal),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Erro ao cadastrar animal');
+      }
+  
       toast.success(isEdicao ? 'Animal atualizado com sucesso!' : 'Animal cadastrado com sucesso!');
       navigate('/animais');
     } catch (error) {
@@ -73,6 +86,7 @@ function CadastroAnimal() {
       console.error(error);
     }
   };
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;

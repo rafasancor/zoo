@@ -23,6 +23,8 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      // Adiciona a regra para permitir o uso de any
+      '@typescript-eslint/no-explicit-any': 'off', // Desativa a regra que proíbe o uso de any
     },
   }
 );

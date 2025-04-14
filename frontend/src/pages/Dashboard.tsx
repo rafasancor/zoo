@@ -7,7 +7,7 @@ function Dashboard() {
     <div className="space-y-8">
       <header className="text-center">
         <h1 className="text-4xl font-bold text-gray-800">Bem-vindo ao ZooManager</h1>
-        <p className="mt-2 text-gray-600">Sistema de Gerenciamento de Zoológico</p>
+        <p className="mt-2 text-gray-600">Sistema de Gerenciamento de Zoológico do CIEE</p>
       </header>
 
       <div className="grid md:grid-cols-2 gap-6">

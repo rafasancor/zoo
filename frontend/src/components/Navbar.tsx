@@ -15,7 +15,7 @@ function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-2 text-xl font-bold">
             <PawPrint size={24} />
-            <span>ZooManager</span>
+            <span>ZooManager + CIEE</span>
           </Link>
           
           <div className="flex space-x-4">

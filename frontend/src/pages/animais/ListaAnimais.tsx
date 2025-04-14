@@ -1,21 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Plus, Search, Trash2, Edit } from 'lucide-react';
+import { Plus, Trash2, Edit } from 'lucide-react';
 import { Animal, ESPECIES, HABITATS, PAISES } from '../../types';
 import { toast } from 'react-hot-toast';
+import axios from 'axios';
 
 function ListaAnimais() {
   const [animais, setAnimais] = useState<Animal[]>([]);
   const [filtros, setFiltros] = useState({
     especie: '',
     habitat: '',
-    paisOrigem: ''
+    pais_origem: ''
   });
+
+  // Função para buscar animais
+  useEffect(() => {
+    const fetchAnimais = async () => {
+      try {
+        console.log('Iniciando requisição para buscar animais...');
+        const response = await axios.get('http://localhost:3001/api/animais');
+        console.log('Resposta da API:', response.data);
+        setAnimais(response.data);
+        if (response.data.length === 0) {
+          console.log('Nenhum animal retornado pela API.');
+        }
+      } catch (error: any) {
+        toast.error('Erro ao carregar animais');
+        console.error('Erro ao buscar animais:', error.message);
+        if (error.response) {
+          console.error('Status do erro:', error.response.status);
+          console.error('Dados do erro:', error.response.data);
+        }
+      }
+    };
+
+    fetchAnimais();
+  }, []);
 
   const handleDelete = async (id: number) => {
     if (window.confirm('Tem certeza que deseja excluir este animal?')) {
       try {
-        // TODO: Implementar chamada à API
+        await axios.delete(`http://localhost:3001/api/animais/${id}`);
+        setAnimais(animais.filter(animal => animal.id !== id));
         toast.success('Animal excluído com sucesso!');
       } catch (error) {
         toast.error('Erro ao excluir animal');
@@ -69,8 +95,8 @@ function ListaAnimais() {
           </select>
 
           <select
-            name="paisOrigem"
-            value={filtros.paisOrigem}
+            name="pais_origem"
+            value={filtros.pais_origem}
             onChange={handleFiltroChange}
             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
           >
@@ -118,9 +144,11 @@ function ListaAnimais() {
                     <td className="px-6 py-4 whitespace-nowrap">{animal.nome}</td>
                     <td className="px-6 py-4 whitespace-nowrap">{animal.especie}</td>
                     <td className="px-6 py-4 whitespace-nowrap">{animal.habitat}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{animal.paisOrigem}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{animal.pais_origem}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      {new Date(animal.dataNascimento).toLocaleDateString('pt-BR')}
+                      {animal.data_nascimento
+                        ? new Date(animal.data_nascimento).toLocaleDateString('pt-BR')
+                        : 'N/A'}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right">
                       <div className="flex justify-end space-x-2">

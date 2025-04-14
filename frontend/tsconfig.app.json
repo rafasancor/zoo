@@ -20,5 +20,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src", "backend/src/App.ts", "backend/src/server.ts", "backend/src/config", "backend/src/routes", "backend/src/database.ts"]
 }
