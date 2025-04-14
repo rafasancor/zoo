@@ -43,6 +43,7 @@ ZOO-MANAGEMENT-SYSTEM/
 └── outros arquivos de configuração
 
 
+
 ## Banco de Dados
 
 Abaixo está a estrutura da tabela `animais` utilizada no banco de dados MySQL, bem como alguns dados de teste inseridos manualmente para desenvolvimento:
